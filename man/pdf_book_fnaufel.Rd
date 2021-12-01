@@ -8,10 +8,12 @@ pdf_book_fnaufel(
   toc = TRUE,
   number_sections = TRUE,
   fig_caption = TRUE,
-  pandoc_args = paste("-V", "links-as-notes", "--variable=subparagraph",
-    paste0("--filter=", system.file("rmarkdown/resources/filters/dollar.py3", package =
-    "bd.format")), paste0("--filter=", system.file("rmarkdown/resources/filters/hl.py3",
-    package = "bd.format"))),
+  pandoc_args = paste("--variable=link-as-notes", paste0("--variable=", "resources:",
+    system.file("rmarkdown/resources", package = "bd.format")),
+    "--variable=subparagraph", paste0("--filter=",
+    system.file("rmarkdown/resources/filters/dollar.py3", package = "bd.format")),
+    paste0("--filter=", system.file("rmarkdown/resources/filters/hl.py3", package =
+    "bd.format"))),
   base_format = rmarkdown::pdf_document,
   toc_unnumbered = TRUE,
   toc_appendix = TRUE,
@@ -25,6 +27,7 @@ pdf_book_fnaufel(
   includes = rmarkdown::includes(in_header =
     system.file("rmarkdown/resources/00-preambulo.tex", package = "bd.format")),
   md_extensions = "+fenced_divs+bracketed_spans",
+  template = system.file("rmarkdown/resources/bd.format.latex", package = "bd.format"),
   ...
 )
 }
@@ -60,6 +63,8 @@ pdf_book_fnaufel(
 \item{includes}{see \link[bookdown:pdf_book]{bookdown::pdf_book}}
 
 \item{md_extensions}{see \link[bookdown:pdf_book]{bookdown::pdf_book}}
+
+\item{template}{see \link[bookdown:pdf_book]{bookdown::pdf_book}}
 
 \item{...}{see \link[bookdown:pdf_book]{bookdown::pdf_book}}
 }

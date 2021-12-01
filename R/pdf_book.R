@@ -20,6 +20,7 @@
 #' @param citation_package see [bookdown::pdf_book]
 #' @param includes see [bookdown::pdf_book]
 #' @param md_extensions see [bookdown::pdf_book]
+#' @param template see [bookdown::pdf_book]
 #' @param ... see [bookdown::pdf_book]
 #'
 #' @return see [bookdown::pdf_book]
@@ -35,9 +36,13 @@ pdf_book_fnaufel <- function(
   toc = TRUE,
   number_sections = TRUE,
   fig_caption = TRUE,
-  pandoc_args = paste(
-    '-V',
-    'links-as-notes',
+  pandoc_args = c(
+    '--variable=link-as-notes',
+    paste0(
+      '--variable=',
+      'resources:',
+      system.file('rmarkdown/resources', package = 'bd.format')
+    ),
     '--variable=subparagraph',
     paste0(
       '--filter=',
@@ -71,6 +76,9 @@ pdf_book_fnaufel <- function(
     )
   ),
   md_extensions = '+fenced_divs+bracketed_spans',
+  template = system.file(
+    'rmarkdown/resources/bd.format.latex', package = 'bd.format'
+  ),
   ...
 ) {
 
@@ -92,6 +100,7 @@ pdf_book_fnaufel <- function(
     citation_package = citation_package,
     includes = includes,
     md_extensions = md_extensions,
+    template = template,
     ...
   )
 
