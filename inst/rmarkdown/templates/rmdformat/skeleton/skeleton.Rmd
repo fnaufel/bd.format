@@ -1,0 +1,80 @@
+---
+title: ''
+subtitle: ''
+author: 'fnaufel'
+email: 'https://fnaufel.github.io/'
+date: '(v. `r format(Sys.Date(), "%d/%m/%Y")`)'
+lang: 'pt'
+output: rmdformat::fnaufel_rmd_format
+# To install this format, enter
+#   install.packages("devtools")
+#   devtools::install_github("fnaufel/rmdformat")
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+
+opts_chunk$set(
+  echo = TRUE, 
+  # collapse = TRUE,
+  # cache = TRUE,
+  out.width = "90%",
+  fig.align = 'center',
+  fig.width = 7,
+  fig.show = "hold"
+)
+
+# Supress crayon output
+options(crayon.enabled = FALSE)
+
+options(
+  # Avoid scientific notation
+  scipen = 15,
+  # Use a comma as decimal separator
+  OutDec = ',',
+  # Number of decimal digits for numbers produced by inline R code
+  fmdigits = 2
+)
+
+# Useful libraries
+library(glue)
+library(patchwork)
+library(latex2exp)
+library(kableExtra)
+options(knitr.kable.NA = '')
+
+# For nice dataframe summaries
+library(summarytools)
+st_options(
+  plain.ascii = FALSE,
+  dfSummary.style = 'grid',
+  dfSummary.varnumbers = FALSE,
+  dfSummary.valid.col = FALSE,
+  dfSummary.graph.col = is_html_output(),
+  headings = FALSE,
+  dfSummary.graph.magnif = 1,
+  # tmp.img.dir = 'dfimg',
+  lang = 'pt',
+  subtitle.emphasis = FALSE
+)
+
+# Tidy!
+library(tidyverse)
+
+# Useful functions provided by the rmdformat package
+# 
+# Execute 
+# 
+#   cat(system.file("rmarkdown/resources/common.R", package = "rmdformat"))
+# 
+# to see the location of the file
+source(
+  system.file(
+    "rmarkdown/resources/common.R",
+    package = "rmdformat"
+  )
+)
+```
+
+
+# Chapter
